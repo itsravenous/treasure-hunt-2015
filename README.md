@@ -1,4 +1,4 @@
-# Treasure Hunt front-end
+# Treasure Hunt
 ## Image attributions
 ### Chapter 1
 [Studies of rowing boats and a very small view of a sailing vessel](http://collections.rmg.co.uk/collections/objects/129256.html) (National Maritime Museum, Greenwich, London) - cropped and vignetted to show single vessel
