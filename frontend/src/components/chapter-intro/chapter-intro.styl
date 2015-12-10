@@ -26,19 +26,24 @@
 		right: 0
 		bottom: 0
 
+	a
+		position: relative
+
 	// State
 	.bg
 		opacity: 0
 		transform: translateY(1em)
-		transition: opacity 2s, transform 2s
 
 	h1
 		position relative
 		opacity: 0
 		transform: translateY(2em)
-		transition: opacity 3s, transform 3s
 
 	&[data-state="ready"]
+		.bg
+			transition: opacity 2s, transform 2s
+		h1
+			transition: opacity 3s, transform 3s
 		.bg,
 		h1
 			opacity: 1
