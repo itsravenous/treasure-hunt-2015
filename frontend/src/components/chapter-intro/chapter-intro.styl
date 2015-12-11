@@ -16,6 +16,7 @@
 	// Layout
 	position: relative
 	display: flex
+	flex-direction: column
 	align-items: center
 	justify-content: center
 
@@ -39,12 +40,21 @@
 		opacity: 0
 		transform: translateY(2em)
 
+	a
+		position relative
+		opacity: 0
+		transform: translateY(2em)
+
 	&[data-state="ready"]
 		.bg
 			transition: opacity 2s, transform 2s
 		h1
 			transition: opacity 3s, transform 3s
+		a
+			transition: opacity 3s, transform 3s
+
 		.bg,
-		h1
+		h1,
+		a
 			opacity: 1
 			transform: none
