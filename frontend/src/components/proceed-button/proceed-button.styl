@@ -1,0 +1,22 @@
+.proceed-button
+	position: relative
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 0
+	@extend .animated, .pulse, .animated.infinite
+	animation-duration: 3s
+	&:before,
+	&:after
+		position absolute
+		left: 0.25rem
+		top: 0.25rem
+		right: 0.25rem
+		bottom: 0.25rem
+		border: 1px solid rgba(0, 0, 0, 0.75)
+		transform: rotate(45deg)
+		content: ''
+	&:after
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0

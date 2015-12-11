@@ -1,5 +1,6 @@
 var React = require('react');
 var Link = require('react-router').Link;
+var ProceedButton = require('../proceed-button/proceed-button');
 var chapters = require('../../data/chapters');
 
 var ChapterIntro = React.createClass({
@@ -36,7 +37,7 @@ var ChapterIntro = React.createClass({
 		var bgStyle = {
 			backgroundImage: 'url("'+chapter.image+'")'
 		};
-		var link = chapter.link ? <Link to={chapter.link}>{chapter.linkText}</Link> : '';
+		var link = chapter.link ? <ProceedButton to={chapter.link}>{chapter.linkText}</ProceedButton> : '';
 		return <div data-state={this.state.ready ? 'ready' : 'unready'} className="chapter-intro">
 			<div className="bg" style={bgStyle} />
 			<h1>

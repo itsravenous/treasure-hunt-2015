@@ -27,7 +27,7 @@
 		right: 0
 		bottom: 0
 
-	a
+	.proceed-button
 		position: relative
 
 	// State
@@ -40,7 +40,7 @@
 		opacity: 0
 		transform: translateY(2em)
 
-	a
+	.proceed-button
 		position relative
 		opacity: 0
 		transform: translateY(2em)
@@ -50,11 +50,13 @@
 			transition: opacity 2s, transform 2s
 		h1
 			transition: opacity 3s, transform 3s
-		a
+		.proceed-button
 			transition: opacity 3s, transform 3s
 
 		.bg,
 		h1,
-		a
+		.proceed-button
 			opacity: 1
 			transform: none
+		.proceed-button
+			transform: rotate(45deg)
