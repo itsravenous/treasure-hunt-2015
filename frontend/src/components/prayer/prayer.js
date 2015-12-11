@@ -82,9 +82,9 @@ var Prayer = React.createClass({
 	render: function () {
 		var display = null;
 		if (this.state.stage === SWITCH_ON) {
-			display = <button onClick={this.lightsOut} className="lightswitch" data-state="on">Turn out the light</button>;
+			display = <button onTouchStart={this.lightsOut} className="lightswitch" data-state="on">Turn out the light</button>;
 		} else if (this.state.stage === SWITCH_OFF){
-			display = <button onClick={this.lightsOut} className="lightswitch" data-state="off">Turn out the light</button>;
+			display = <button className="lightswitch" data-state="off">Turn out the light</button>;
 		} else if (this.state.message > -1 && (this.state.stage === MESSAGES1 || this.state.stage === MESSAGES2)) {
 			display = <p className="dialogue" key={new Date().getTime()}>{MESSAGES[this.state.message]}</p>;
 		}
