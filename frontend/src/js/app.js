@@ -6,8 +6,13 @@ var Route = require('react-router').Route;
 var Link = require('react-router').Link;
 var config = require('./config');
 
+// Load remote deps
+var switchClient = require('./switch-client');
+switchClient.getSwitches();
+
 // Components
 var ChapterIntro = require('../components/chapter-intro/chapter-intro');
+var Prayer = require('../components/prayer/prayer');
 
 var Home = React.createClass({
 	render: function () {
@@ -28,6 +33,7 @@ ReactDOM.render((
   <Router>
     <Route path="/" component={Home} />
 		<Route path="/chapter/:chapter" component={ChapterIntro}/>
+		<Route path="/prayer" component={Prayer}/>
 		<Route path="*" component={NoMatch}/>
   </Router>
 ), 	document.getElementById('app'));

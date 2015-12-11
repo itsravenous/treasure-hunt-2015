@@ -19,6 +19,8 @@ module.exports = [
 	{
 		title: 'A whispered prayer',
 		number: 4,
-		image: '/img/chapter4.png'
+		image: '/img/chapter4.png',
+		link: '/prayer',
+		linkText: 'Enter the sanctum'
 	}
 ];
