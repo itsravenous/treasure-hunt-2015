@@ -1,0 +1,18 @@
+.dialogue-enter {
+  opacity: 0.01;
+}
+
+.dialogue-enter.dialogue-enter-active {
+  opacity: 1;
+  transition: opacity 2500ms ease-in-out 250ms;
+}
+
+.dialogue-leave {
+  opacity: 1;
+}
+
+.dialogue-leave.dialogue-leave-active {
+  opacity: 0.01;
+	transform: translateY(-2em);
+  transition: transform 2500ms, opacity 1500ms;
+}

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/itsravenous/treasure-hunt-2015#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "react-addons-css-transition-group": "^0.14.3"
   }
 }

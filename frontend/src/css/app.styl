@@ -1,11 +1,16 @@
+@require "./transitions/**/*"
+@require "./type/**/*"
 @require "../components/**/*"
 @require "../fonts/**/*"
 
+
+
+// Root
 #app
 	// Styles
 	background: url("/img/bg.png")
 	font-family: 'TreasureHunt'
-	font-size: 0.75rem
+	font-size: 1.5rem
 
 	// Self-layout
 	position: absolute
@@ -18,5 +23,6 @@
 	display: flex
 	align-content: stretch
 
-	.chapter-intro
+	> * {
 		flex: 1
+	}

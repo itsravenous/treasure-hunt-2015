@@ -1,0 +1,40 @@
+.lightswitch
+	width: 2rem
+	height: 3rem
+	border: 0 solid
+	outline: 0 solid
+	background-color: transparent
+	background-image: url("/img/switch-on.svg")
+	background-size: contain
+	background-repeat: no-repeat
+	font-size: 0
+
+	&[data-state="off"]
+		background-image: url("/img/switch-off.svg")
+		opacity: 0
+		transition: opacity 1000ms ease-out 500ms
+
+.prayer
+	// Styles
+	background: #000
+	color: #fff
+
+	.dialogue
+		text-align: center
+
+	// Layout
+	position: relative
+
+	.dialogue,
+	.lightswitch
+		position: absolute
+		top: 50%
+		margin-top: -1em
+
+	.dialogue
+		width: 100%;
+
+	.lightswitch
+		left: 50%
+		margin-left: -1rem
+		margin-top: -1.5rem
