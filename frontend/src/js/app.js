@@ -13,6 +13,7 @@ switchClient.getSwitches();
 // Components
 var ChapterIntro = require('../components/chapter-intro/chapter-intro');
 var Prayer = require('../components/prayer/prayer');
+var Sailing = require('../components/sailing/sailing');
 
 var Home = React.createClass({
 	render: function () {
@@ -34,6 +35,7 @@ ReactDOM.render((
     <Route path="/" component={Home} />
 		<Route path="/chapter/:chapter" component={ChapterIntro}/>
 		<Route path="/prayer" component={Prayer}/>
+		<Route path="/sailing" component={Sailing}/>
 		<Route path="*" component={NoMatch}/>
   </Router>
 ), 	document.getElementById('app'));

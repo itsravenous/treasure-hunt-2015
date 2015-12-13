@@ -1,0 +1,37 @@
+// Root
+.compass
+	// Self-layout
+	width: 100%
+	height: 100%
+
+	// Styles
+	font-weight: bold
+	border-radius: 50%
+	border: double 3px rgba(0, 0, 0, 0.5)
+	&:before
+	&:after
+		position: absolute
+		top: 0.5rem
+		bottom: 0.5rem
+		left: 50%
+		width: 1px
+		background: rgba(0, 0, 0, 0.5)
+		content: ''
+	&:before
+		transform: rotate(90deg)
+	&:after
+		border-top: 1rem solid red
+
+	// Layout
+	.north
+	.east
+	.south
+	.west
+		position: absolute
+		margin-left: -0.3em
+	.north
+		left: 50%
+		top: 0
+
+	// State
+	transform-origin: 50% 50%

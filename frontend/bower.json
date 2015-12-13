@@ -1,0 +1,21 @@
+{
+  "name": "treasure-hunt-frontend",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Tom Jenkins <tom@itsravenous.com> (http://itsravenous.com)"
+  ],
+  "license": "GPL-2.0",
+  "homepage": "https://github.com/itsravenous/treasure-hunt-2015",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
