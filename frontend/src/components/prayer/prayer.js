@@ -67,7 +67,7 @@ var Prayer = React.createClass({
 			break;
 		}
 		return <div className="prayer">
-			<ReactCSSTransitionGroup transitionName="dialogue" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
+			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
 				{display}
 			</ReactCSSTransitionGroup>
 		</div>;
