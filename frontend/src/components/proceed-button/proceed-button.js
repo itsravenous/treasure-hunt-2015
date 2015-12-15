@@ -6,8 +6,7 @@ var ProceedButton = React.createClass({
 		return 'ProceedButton';
 	},
 	render: function () {
-		console.log(this.props.to)
-		return <Link className="proceed-button" to={this.props.to}>{this.props.children}</Link>;
+		return <Link className="proceed-button" to={this.props.to} style={this.props.style}>{this.props.children}</Link>;
 	}
 });
 

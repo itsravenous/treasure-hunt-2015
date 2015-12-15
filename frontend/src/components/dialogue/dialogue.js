@@ -28,6 +28,18 @@ var Dialogue = React.createClass({
 		this.interval = setInterval(this.nextDialogue, 6000);
 	},
 
+	shouldComponentUpdate: function (nextProps, nextState) {
+		// Prevent update if no change in lines (otherwise we get current line anim repeated)
+		var identical = true;
+		this.props.lines.forEach(function (line, i) {
+			if (nextProps.lines[i] !== line) {
+				identical = false;
+			}
+		});
+		identical = (identical && this.state.message === nextState.message);
+		return !identical;
+	},
+
 	nextDialogue: function () {
 		var nextMessage = this.props.lines[this.state.message + 1];
 		if (nextMessage) {

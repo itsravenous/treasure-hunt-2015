@@ -15,14 +15,7 @@ var ChapterIntro = require('../components/chapter-intro/chapter-intro');
 var Prayer = require('../components/prayer/prayer');
 var Sailing = require('../components/sailing/sailing');
 
-var Home = React.createClass({
-	render: function () {
-		return <div id="home">
-			<Link to="/chapter/1">Begin</Link>
-			{this.props.children}
-		</div>;
-	}
-});
+var Intro = require('../components/intro/intro');
 
 var NoMatch = React.createClass({
 	render: function () {
@@ -32,7 +25,7 @@ var NoMatch = React.createClass({
 
 ReactDOM.render((
   <Router>
-    <Route path="/" component={Home} />
+    <Route path="/" component={Intro} />
 		<Route path="/chapter/:chapter" component={ChapterIntro}/>
 		<Route path="/prayer" component={Prayer}/>
 		<Route path="/sailing" component={Sailing}/>
