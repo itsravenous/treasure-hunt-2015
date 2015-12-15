@@ -13,13 +13,18 @@ module.exports = [
 	},
 	{
 		number: 3,
-		title: 'Magic glasses',
+		title: 'A big fish',
 		image: '/img/chapter3.png'
 	},
 	{
-		title: 'A whispered prayer',
 		number: 4,
-		image: '/img/chapter4.png',
+		title: 'Magic glasses',
+		image: '/img/chapter4.png'
+	},
+	{
+		title: 'A whispered prayer',
+		number: 5,
+		image: '/img/chapter5.png',
 		link: '/prayer',
 		linkText: 'Enter the sanctum'
 	}
