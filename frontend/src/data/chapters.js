@@ -3,7 +3,7 @@ module.exports = [
 		number: 1,
 		title: 'Water, water, everywhere',
 		image: '/img/chapter1.png',
-		link: '/chapter/4',
+		link: '/sailing',
 		linkText: 'Proceed'
 	},
 	{

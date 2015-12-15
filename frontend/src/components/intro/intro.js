@@ -11,7 +11,7 @@ var INTRO = 0;
 var BUTTON = 1;
 var DIALOGUE = [
 	'Good evening',
-	'my name is',
+	'My name is',
 	'my name is unimportant.',
 	'I know who you are, though.',
 	'Oh yes.',
@@ -33,7 +33,7 @@ var Intro = React.createClass({
 
 	render: function () {
 		var buttonStyle = this.state.stage === BUTTON ? {} : HIDDEN;
-		button = <ProceedButton to="/sailing" style={buttonStyle}/>;
+		button = <ProceedButton to="/chapter/1" style={buttonStyle}/>;
 		return <div className="intro">
 			<Dialogue lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: BUTTON })}/>
 			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
