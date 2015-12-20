@@ -1,10 +1,14 @@
 var React = require('react');
 var Compass = require('../compass/compass');
 var Dialogue = require('../dialogue/dialogue');
+var ProceedButton = require('../proceed-button/proceed-button');
+var Lock = require('../lock/lock');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-var INTRO = 0;
-var COMPASS = 1;
+var STAGE_INTRO = 0;
+var STAGE_COMPASS = 1;
+var STAGE_LOCK = 2;
+var STAGE_EXITING = 3;
 var DIALOGUE = [
 	'A young boy sits in a lifeboat, set adrift.',
 	'He is alone, and it is starting to rain.',
@@ -24,19 +28,36 @@ var Sailing = React.createClass({
 
 	getInitialState: function () {
 		return {
-			stage: INTRO
+			stage: STAGE_INTRO
 		};
+	},
+
+	goNext: function () {
+		this.setState({
+			stage: STAGE_EXITING
+		});
+		setTimeout(function () {
+			window.location = '#/chapter/2';
+		}, 1000);
 	},
 
 	render: function () {
 		var display = null;
 		var key = new Date().getTime();
 		switch (this.state.stage) {
-			case INTRO:
-				display = <Dialogue key={key} lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: COMPASS })}/>;
+			case STAGE_INTRO:
+				display = <Dialogue key={key} lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: STAGE_COMPASS })}/>;
 			break;
-			case COMPASS:
-				display = <Compass key={key}/>;
+			case STAGE_COMPASS:
+				display = <div>
+					<Compass key={key}/>
+					<ProceedButton onClick={this.setState.bind(this, { stage: STAGE_LOCK })}/>
+				</div>;
+			break;
+			case STAGE_LOCK:
+				display = <div>
+					<Lock pattern="2 4 8 6" onUnlock={this.goNext}/>
+				</div>;
 			break;
 		}
 		return <div className="sailing">

@@ -6,7 +6,11 @@ var ProceedButton = React.createClass({
 		return 'ProceedButton';
 	},
 	render: function () {
-		return <Link className="proceed-button" to={this.props.to} style={this.props.style}>{this.props.children}</Link>;
+		var onClick = this.props.to ? null : (e) => {
+			e.preventDefault();
+			if (this.props.onClick) this.props.onClick();
+		};
+		return <Link onClick={onClick} className="proceed-button" to={this.props.to} style={this.props.style}>{this.props.children}</Link>;
 	}
 });
 
