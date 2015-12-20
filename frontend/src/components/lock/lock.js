@@ -1,4 +1,5 @@
 var React = require('react');
+var findPos = require('../../js/find-pos');
 
 var DOT_STYLE = {
 	fill: 'transparent',
@@ -92,8 +93,9 @@ var Lock = React.createClass({
 	 */
 	handleStart: function (e) {
 		// If touch is on a dot, start path
-		var x = e.targetTouches[0].pageX - this.refs.root.offsetLeft;
-		var y = e.targetTouches[0].pageY - this.refs.root.offsetTop;
+		var rootPos = findPos(this.refs.root);
+		var x = e.targetTouches[0].pageX - rootPos[0];
+		var y = e.targetTouches[0].pageY - rootPos[1];
 		var dot = this.getDotFromPoint(x, y);
 		if (dot) {
 			this.setState({
@@ -113,13 +115,14 @@ var Lock = React.createClass({
 	 */
 	handleMove: function (e) {
 		// Get coords
-		var x = e.targetTouches[0].pageX - this.refs.root.offsetLeft;
-		var y = e.targetTouches[0].pageY - this.refs.root.offsetTop;
+		var rootPos = findPos(this.refs.root);
+		var x = e.targetTouches[0].pageX - rootPos[0];
+		var y = e.targetTouches[0].pageY - rootPos[1];
 
 		// Check for intersection with another, thus far untouched, dot
-		var touchedDots = this.state.touchedDots;
+		var touchedDots = this.state.touchedDots || [];
 		var dot = this.getDotFromPoint(x, y);
-		if (dot && this.state.touchedDots.indexOf(dot) === -1) {
+		if (dot && touchedDots.indexOf(dot) === -1) {
 			touchedDots.push(dot);
 		}
 
@@ -138,7 +141,7 @@ var Lock = React.createClass({
 	handleEnd: function (e) {
 		// Build pattern string from touched dots
 		var valid = false;
-		if (this.props.pattern) {
+		if (this.props.pattern && this.state.touchedDots) {
 			var pattern = this.state.touchedDots.map(function (dot) {
 				return dot.id.replace('dot', '');
 			}).join(' ');
@@ -192,7 +195,7 @@ var Lock = React.createClass({
 			return dot.id;
 		}) : [];
 
-		return <div>
+		return <div className="lock">
 			<svg ref="root" onTouchStart={this.handleStart} onTouchMove={this.handleMove} onTouchEnd={this.handleEnd} width="256" height="256" viewBox="0 0 256 256" id="lock" version="1.1">
 				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot1" x="28" y="28" style={touchedDotsById.indexOf('dot1') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
 				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot2" x="128" y="28" style={touchedDotsById.indexOf('dot2') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
