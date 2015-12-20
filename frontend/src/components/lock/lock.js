@@ -33,6 +33,12 @@ var Lock = React.createClass({
 		};
 	},
 
+	/**
+	 * Determines the dot, if any, in which a point falls
+	 * @param  {Number} x
+	 * @param  {Number} y
+	 * @return {SVGRectElement}
+	 */
 	getDotFromPoint: function (x, y) {
 		var dots = this.refs.root.getElementsByTagName('rect');
 		var matchedDot = null;
@@ -48,6 +54,11 @@ var Lock = React.createClass({
 		return matchedDot;
 	},
 
+	/**
+	 * Determines the centroid of a dot
+	 * @param  {SVGRectElement}
+	 * @return {Object} with x/y keyed coords
+	 */
 	getDotCenter: function (dot) {
 		var cx = dot.x.baseVal.value + DOT_SIZE / 2;
 		var cy = dot.y.baseVal.value + DOT_SIZE / 2;
@@ -57,6 +68,10 @@ var Lock = React.createClass({
 		};
 	},
 
+	/**
+	 * Handles initial touch on the lock, setting start dot if hit
+	 * @param  {Event} e
+	 */
 	handleStart: function (e) {
 		// If touch is on a dot, start path
 		var x = e.targetTouches[0].pageX - this.refs.root.offsetLeft;
@@ -74,6 +89,10 @@ var Lock = React.createClass({
 		}
 	},
 
+	/**
+	 * Handles touchmove on the lock, adding the dot (if any) at the coords to list
+	 * @param  {Event} e
+	 */
 	handleMove: function (e) {
 		// Get coords
 		var x = e.targetTouches[0].pageX - this.refs.root.offsetLeft;
@@ -94,6 +113,10 @@ var Lock = React.createClass({
 		this.setState(newState);
 	},
 
+	/**
+	 * Handles touchend on the lock, resetting it
+	 * @param  {Event} e
+	 */
 	handleEnd: function (e) {
 		// Reset path
 		this.setState({
