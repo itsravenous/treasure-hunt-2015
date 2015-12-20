@@ -14,8 +14,19 @@ var DOT_STYLE_ACTIVE = {
 	transformOrigin: '50% 50%',
 	transform: 'scale(2) rotate(135deg)'
 };
+var DOT_STYLE_ACTIVE_VALID = {
+	fill: '#a0e050',
+	transition: 'transform 750ms, fill 750ms',
+	transformOrigin: '50% 50%',
+	transform: 'scale(2) rotate(135deg)'
+};
 var LINE_STYLE = {
 	stroke: '#b0a080',
+	strokeWidth: '1px',
+	fill: 'none'
+};
+var LINE_STYLE_VALID = {
+	stroke: '#a0e050',
 	strokeWidth: '1px',
 	fill: 'none'
 };
@@ -30,6 +41,13 @@ var Lock = React.createClass({
 	getInitialState: function () {
 		return {
 			touching: false
+		};
+	},
+
+	getDefaultProps: function () {
+		return {
+			pattern: null,
+			onUnlock: null,
 		};
 	},
 
@@ -114,15 +132,32 @@ var Lock = React.createClass({
 	},
 
 	/**
-	 * Handles touchend on the lock, resetting it
+	 * Handles touchend on the lock, validating the entered pattern and resetting the lock
 	 * @param  {Event} e
 	 */
 	handleEnd: function (e) {
-		// Reset path
-		this.setState({
-			touching: false,
-			touchedDots: null
-		});
+		// Build pattern string from touched dots
+		var valid = false;
+		if (this.props.pattern) {
+			var pattern = this.state.touchedDots.map(function (dot) {
+				return dot.id.replace('dot', '');
+			}).join(' ');
+			valid = pattern === this.props.pattern;
+		}
+
+		if (valid) {
+			// Highlight valid path
+			this.setState({
+				valid: true
+			});
+			if (this.props.onUnlock) this.props.onUnlock();
+		} else {
+			// Reset path
+			this.setState({
+				touching: false,
+				touchedDots: null
+			});
+		}
 	},
 
 	render: function () {
@@ -144,10 +179,12 @@ var Lock = React.createClass({
 				}
 				points.push(x + ',' + y);
 			}.bind(this));
-			// Add current touch coords
-			points.push((this.state.x - lastTouchedDotC.x) + ',' + (this.state.y - lastTouchedDotC.y));
+			// Add current touch coords if incomplete
+			if (!this.state.valid) {
+				points.push((this.state.x - lastTouchedDotC.x) + ',' + (this.state.y - lastTouchedDotC.y));
+			}
 			pathDef = 'm ' + points.join(' ');
-			path = <path d={pathDef} style={LINE_STYLE} />;
+			path = <path d={pathDef} style={this.state.valid ? LINE_STYLE_VALID : LINE_STYLE} />;
 		}
 
 		// Touched dots by ID, for matching below
@@ -157,15 +194,15 @@ var Lock = React.createClass({
 
 		return <div>
 			<svg ref="root" onTouchStart={this.handleStart} onTouchMove={this.handleMove} onTouchEnd={this.handleEnd} width="256" height="256" viewBox="0 0 256 256" id="lock" version="1.1">
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot1" x="28" y="28" style={touchedDotsById.indexOf('dot1') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot2" x="128" y="28" style={touchedDotsById.indexOf('dot2') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot3" x="228" y="28" style={touchedDotsById.indexOf('dot3') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot4" x="28" y="128" style={touchedDotsById.indexOf('dot4') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot5" x="128" y="128" style={touchedDotsById.indexOf('dot5') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot6" x="228" y="128" style={touchedDotsById.indexOf('dot6') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot7" x="28" y="228" style={touchedDotsById.indexOf('dot7') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot8" x="128" y="228" style={touchedDotsById.indexOf('dot8') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
-				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot9" x="228" y="228" style={touchedDotsById.indexOf('dot9') > -1 ? DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot1" x="28" y="28" style={touchedDotsById.indexOf('dot1') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot2" x="128" y="28" style={touchedDotsById.indexOf('dot2') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot3" x="228" y="28" style={touchedDotsById.indexOf('dot3') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot4" x="28" y="128" style={touchedDotsById.indexOf('dot4') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot5" x="128" y="128" style={touchedDotsById.indexOf('dot5') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot6" x="228" y="128" style={touchedDotsById.indexOf('dot6') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot7" x="28" y="228" style={touchedDotsById.indexOf('dot7') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot8" x="128" y="228" style={touchedDotsById.indexOf('dot8') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
+				<rect width={DOT_SIZE} height={DOT_SIZE} id="dot9" x="228" y="228" style={touchedDotsById.indexOf('dot9') > -1 ? this.state.valid ? DOT_STYLE_ACTIVE_VALID : DOT_STYLE_ACTIVE : DOT_STYLE} />
 				{path}
 			</svg>
 		</div>;
