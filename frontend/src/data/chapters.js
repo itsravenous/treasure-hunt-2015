@@ -19,7 +19,8 @@ module.exports = [
 	{
 		number: 4,
 		title: 'Magic glasses',
-		image: '/img/chapter4.png'
+		image: '/img/chapter4.png',
+		link: '/magic-goggles'
 	},
 	{
 		title: 'A whispered prayer',

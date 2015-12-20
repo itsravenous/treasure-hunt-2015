@@ -14,7 +14,7 @@ switchClient.getSwitches();
 var ChapterIntro = require('../components/chapter-intro/chapter-intro');
 var Prayer = require('../components/prayer/prayer');
 var Sailing = require('../components/sailing/sailing');
-
+var MagicGoggles = require('../components/magic-goggles/magic-goggles');
 var Intro = require('../components/intro/intro');
 
 var NoMatch = React.createClass({
@@ -29,6 +29,7 @@ ReactDOM.render((
 		<Route path="/chapter/:chapter" component={ChapterIntro}/>
 		<Route path="/prayer" component={Prayer}/>
 		<Route path="/sailing" component={Sailing}/>
+		<Route path="/magic-goggles" component={MagicGoggles}/>
 		<Route path="*" component={NoMatch}/>
   </Router>
 ), 	document.getElementById('app'));

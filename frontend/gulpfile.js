@@ -52,6 +52,13 @@ gulp.task('js', function() {
 	.bundle()
 	.pipe(source('bundle.js'))
 	.pipe(gulp.dest(paths.out + '/js'));
+
+	// Copy un-bundleable libs
+	gulp.src([
+		'src/js/three.min.js',
+		'src/js/psv.js'
+	])
+	.pipe(gulp.dest(paths.out + '/js'));
 });
 
 gulp.task('watch', function() {
