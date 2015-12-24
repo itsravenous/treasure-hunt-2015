@@ -14,7 +14,8 @@ module.exports = [
 	{
 		number: 3,
 		title: 'A big fish',
-		image: '/img/chapter3.png'
+		image: '/img/chapter3.png',
+		link: '/big-fish'
 	},
 	{
 		number: 4,
