@@ -1,16 +1,22 @@
 var React = require('react');
 var Dialogue = require('../dialogue/dialogue');
 var ProceedButton = require('../proceed-button/proceed-button');
+var Lock = require('../lock/lock');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 // Import PSV here when it supports commonJS loading
 
 var STAGE_INTRO = 0;
 var STAGE_BUTTON = 1;
 var STAGE_PSV = 2;
+var STAGE_LOCK = 3;
+var STAGE_EXITING = 4;
 var DIALOGUE = [
-	'As you know, things are not always as they seem.',
-	'Sometimes, you need to look',
-	'beyond.'
+	'Things are not always as they seem.',
+	'Find my magic glasses',
+	'and place me inside',
+	'to see what can\'t be seen.',
+	'Once you know where you must go',
+	'touch the looking glass to show the lock.'
 ];
 
 var MagicGoggles = React.createClass({
@@ -42,6 +48,21 @@ var MagicGoggles = React.createClass({
 			}
 	},
 
+	handlePsvClick: function () {
+		this.setState({
+			stage: STAGE_LOCK
+		});
+	},
+
+	goNext: function () {
+		this.setState({
+			stage: STAGE_EXITING
+		});
+		setTimeout(function () {
+			window.location = '#/chapter/5';
+		}, 1000);
+	},
+
 	render: function () {
 		var display;
 		switch (this.state.stage) {
@@ -52,11 +73,14 @@ var MagicGoggles = React.createClass({
 			display = <ProceedButton onClick={this.setState.bind(this, { stage: STAGE_PSV })}/>;
 			break;
 			case STAGE_PSV:
-				display = <div ref="psv" className="psv"/>;
+				display = <div ref="psv" className="psv" onClick={this.handlePsvClick}/>;
+			break;
+			case STAGE_LOCK:
+				display = <Lock pattern="3 4 8 5" onUnlock={this.goNext}/>;
 			break;
 		}
 		return <div ref="root" className="magic-goggles">
-			<ReactCSSTransitionGroup class="transition-root" transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
+			<ReactCSSTransitionGroup className="transition-root" transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
 				{display}
 			</ReactCSSTransitionGroup>
 		</div>;
