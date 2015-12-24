@@ -95,7 +95,7 @@ SwitchClient.prototype = {
 						}));
 					});
 				} else {
-					reject(util.format('No switch with id %s exists', id)); // @todo don't be lazy - switch might have been added to network after we first got list
+					reject('No switch with id '+id+' exists'); // @todo don't be lazy - switch might have been added to network after we first got list
 				}
 			}.bind(this), reject);
 		}.bind(this));

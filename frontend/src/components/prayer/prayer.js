@@ -39,7 +39,6 @@ var Prayer = React.createClass({
 			this.setState({
 				stage: MESSAGES2
 			});
-			this.startDialogue();
 		}.bind(this), 1500);
 		switches.then(function (switches) {
 			// Dumbly flick first switch @todo check status first, make switch number configurable
