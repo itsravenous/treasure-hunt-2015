@@ -15,13 +15,15 @@ var DIALOGUE = [
 	'my name is unimportant.',
 	'I know who you are, though.',
 	'Oh yes.',
-	'Now that we\'ve been introduced',
+	'Now that we\'ve been introduced,',
 	'I require your help.',
-	'Located in this house are some artifacts of great worth',
-	'I can guide you to them',
-	'but, trapped as I am in this infernal device,',
-	'I cannot retrieve them myself.',
-	'If you can bring me to them, I will make it worth your while.'
+	'I lost my son this morning',
+	'walking along the shore.',
+	'I have been trapped inside this infernal device',
+	'And cannot search for him myself.',
+	'I have some idea, some little clues',
+	'that may reveal where they have taken him.',
+	'If you can bring me to him, I will make it worth your while.'
 ];
 
 var Intro = React.createClass({
