@@ -2,7 +2,7 @@ var util = require('util');
 var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
-var AudioManager = require('./audio-manager');
+var audioManager = require('./audio-manager');
 
 app = express();
 app.use(bodyParser.json());
@@ -14,14 +14,14 @@ app.get('/treasure', function (req, res, next) {
 });
 
 // Music API
-AudioManager.loadTracks();
 app.get('/tracks', function (req, res, next) {
-	res.send(AudioManager.tracks);
+	res.send(audioManager.tracks);
 });
 app.put('/current-track', function (req, res, next) {
 	var id = req.body.id;
-	var track = AudioManager.getTrackById(id);
+	var track = audioManager.getTrackById(id);
 	if (track) {
+		audioManager.setCurrentTrack(id);
 		res.send(track);
 	} else {
 		next(new Error(util.format('No track with id %s found', id)));

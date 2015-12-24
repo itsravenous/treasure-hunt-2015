@@ -2,5 +2,9 @@
 	{
 		"id": "intro",
 		"file": "audio/intro.ogg"
+	},
+	{
+		"id": "wind",
+		"file": "audio/wind.ogg"
 	}
 ]
