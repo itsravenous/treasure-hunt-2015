@@ -42,6 +42,7 @@ class AudioManager {
 			player.on('close', (code, signal) => {
 				console.log('close', code, signal);
 				delete this.players[track.id];
+				console.log(this.players)
 			});
 			this.players[track.id] = player;
 		}
@@ -49,15 +50,17 @@ class AudioManager {
 	}
 
 	stopTrack(track) {
-		var player = this.getTrackPlayer(track);
-		console.log('stop', track, player.kill.toString());
-		console.log('kill', player.kill('SIGTERM'));
+		if (this.players[track.id]) {
+			console.log('kill', this.players[track.id].kill('SIGTERM'));
+		}
 	}
 
 	playTrack(track) {
-		var player = this.getTrackPlayer(track);
 		if (this.currentTrack) this.stopTrack(this.currentTrack);
-		this.currentTrack = track;
+		setTimeout(() => {
+			var player = this.getTrackPlayer(track);
+			this.currentTrack = track;
+		}, 1000);
 	}
 }
 
