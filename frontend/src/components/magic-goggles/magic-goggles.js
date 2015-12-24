@@ -65,12 +65,14 @@ var MagicGoggles = React.createClass({
 
 	render: function () {
 		var display;
+		var dialogue;
 		switch (this.state.stage) {
 			case STAGE_INTRO:
-				display = <Dialogue lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: STAGE_BUTTON })}/>;
+				dialogue = <Dialogue lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: STAGE_BUTTON })}/>;
 			break;
 			case STAGE_BUTTON:
-			display = <ProceedButton onClick={this.setState.bind(this, { stage: STAGE_PSV })}/>;
+				dialogue = <Dialogue lines={DIALOGUE} onComplete={this.setState.bind(this, { stage: STAGE_BUTTON })}/>;
+				display = <ProceedButton onClick={this.setState.bind(this, { stage: STAGE_PSV })}/>;
 			break;
 			case STAGE_PSV:
 				display = <div ref="psv" className="psv" onClick={this.handlePsvClick}/>;
@@ -80,9 +82,12 @@ var MagicGoggles = React.createClass({
 			break;
 		}
 		return <div ref="root" className="magic-goggles">
-			<ReactCSSTransitionGroup className="transition-root" transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
-				{display}
-			</ReactCSSTransitionGroup>
+			<div>
+				{dialogue}
+				<ReactCSSTransitionGroup className="transition-root" transitionName="fade" transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
+					{display}
+				</ReactCSSTransitionGroup>
+			</div>
 		</div>;
 	}
 });
