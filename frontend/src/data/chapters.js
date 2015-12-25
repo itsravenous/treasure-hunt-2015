@@ -18,7 +18,8 @@ module.exports = [
 		number: 3,
 		title: 'Magic glasses',
 		image: '/img/magic-glasses.png',
-		link: '/magic-goggles'
+		link: '/magic-goggles',
+		audio: 'magic-glasses'
 	},
 	{
 		title: 'A whispered prayer',

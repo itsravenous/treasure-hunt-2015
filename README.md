@@ -14,7 +14,7 @@ All content is licensed under a Creative Commons license of one sort or another 
 
 ### Chapter 3
 - Title image: [Reading Glasses & Blueprints (8096939321)](https://commons.wikimedia.org/wiki/File:Reading_Glasses_%26_Blueprints_(8096939321).jpg#/media/File:Reading_Glasses_%26_Blueprints_(8096939321).jpg) (Wikimedia Commons) - cropped and run through a [charcoal filter](http://funny.pho.to/charcoal_drawing)
-
+- Background audio: [128 Cello Loop 1](https://freesound.org/people/Thirsk/sounds/121018/), [Cello Loop 5](https://freesound.org/people/juskiddink/sounds/60131/) and [Cellos Down Down](https://freesound.org/people/jus/sounds/41618/), all looped.
 
 ### Chapter 4
 - Title image: [Skulls: above, diagrams demonstrating the proportions of the human skull; below, four views of the skull. Line engraving.](http://wellcomeimages.org/indexplus/image/V0007918.html) (Wellcome Library, London) - cropped and vignetted to show single skull

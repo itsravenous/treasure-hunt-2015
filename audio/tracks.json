@@ -10,5 +10,9 @@
 	{
 		"id": "big-fish",
 		"file": "audio/big-fish.ogg"
+	},
+	{
+		"id": "magic-glasses",
+		"file": "audio/magic-glasses.ogg"
 	}
 ]
