@@ -40,7 +40,7 @@ class AudioManager {
 				console.error(data.toString('utf-8'));
 			});
 			player.on('close', (code, signal) => {
-				console.log('player processes exited', code, signal);
+				console.log('player process exited', code, signal);
 				delete this.players[track.id];
 			});
 			this.players[track.id] = player;
