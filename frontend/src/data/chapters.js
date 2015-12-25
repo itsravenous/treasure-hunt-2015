@@ -17,7 +17,7 @@ module.exports = [
 	{
 		number: 3,
 		title: 'Magic glasses',
-		image: '/img/magic-goggles.png',
+		image: '/img/magic-glasses.png',
 		link: '/magic-goggles'
 	},
 	{

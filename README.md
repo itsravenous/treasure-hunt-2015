@@ -12,6 +12,10 @@ All content is licensed under a Creative Commons license of one sort or another 
 - Title image: [Whale Shark Enhanced](https://commons.wikimedia.org/wiki/File:Whale-shark-enhanced.jpg) (Wikimedia Commons) - cropped to anterior and "sketchified"
 - Background audio: [Under Water Bubbling](https://freesound.org/people/Hampusnoren/sounds/147187/) looped and overlaid with [Bubbles2](https://freesound.org/people/kwahmah_02/sounds/261597/) and [Baleines](https://freesound.org/people/davidou/sounds/88449/).
 
+### Chapter 3
+- Title image: [Reading Glasses & Blueprints (8096939321)](https://commons.wikimedia.org/wiki/File:Reading_Glasses_%26_Blueprints_(8096939321).jpg#/media/File:Reading_Glasses_%26_Blueprints_(8096939321).jpg) (Wikimedia Commons) - cropped and run through a [charcoal filter](http://funny.pho.to/charcoal_drawing)
+
+
 ### Chapter 4
 - Title image: [Skulls: above, diagrams demonstrating the proportions of the human skull; below, four views of the skull. Line engraving.](http://wellcomeimages.org/indexplus/image/V0007918.html) (Wellcome Library, London) - cropped and vignetted to show single skull
 - Lightswitch icon: [Lightswitch](https://thenounproject.com/term/light-switch/2235/) (The Noun Project)
