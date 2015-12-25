@@ -3,6 +3,7 @@ var Link = require('react-router').Link;
 var Dialogue = require('../dialogue/dialogue');
 var chapters = require('../../data/chapters');
 var switchClient = require('../../js/switch-client');
+var audioClient = require('../../js/audio-client');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var switches = switchClient.getSwitches();
@@ -47,6 +48,12 @@ var Prayer = React.createClass({
 			console.error(err);
 			throw new Error('Failed to get switches from API');
 		});
+	},
+
+	componentWillUpdate: function (nextProps, nextState) {
+		if (nextState.stage === STAGE_MESSAGES2) {
+			audioClient.setTrack('outro');
+		}
 	},
 
 	render: function () {

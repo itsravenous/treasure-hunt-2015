@@ -14,5 +14,13 @@
 	{
 		"id": "magic-glasses",
 		"file": "audio/magic-glasses.ogg"
+	},
+	{
+		"id": "prayer",
+		"file": "audio/prayer.ogg"
+	},
+	{
+		"id": "outro",
+		"file": "audio/outro.ogg"
 	}
 ]

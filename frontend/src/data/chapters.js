@@ -26,6 +26,7 @@ module.exports = [
 		number: 4,
 		image: '/img/prayer.png',
 		link: '/prayer',
-		linkText: 'Enter the sanctum'
+		linkText: 'Enter the sanctum',
+		audio: 'prayer'
 	}
 ];
