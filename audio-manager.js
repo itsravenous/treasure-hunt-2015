@@ -77,6 +77,8 @@ class AudioManager {
 				this.players[track.id].kill('SIGTERM');
 				if (done) done();
 			});
+		} else {
+			done();
 		}
 	}
 
