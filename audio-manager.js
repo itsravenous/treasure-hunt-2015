@@ -40,9 +40,8 @@ class AudioManager {
 				console.error(data.toString('utf-8'));
 			});
 			player.on('close', (code, signal) => {
-				console.log('close', code, signal);
+				console.log('player processes exited', code, signal);
 				delete this.players[track.id];
-				console.log(this.players)
 			});
 			this.players[track.id] = player;
 		}
@@ -51,7 +50,7 @@ class AudioManager {
 
 	stopTrack(track) {
 		if (this.players[track.id]) {
-			console.log('kill', this.players[track.id].kill('SIGTERM'));
+			this.players[track.id].kill('SIGTERM');
 		}
 	}
 
