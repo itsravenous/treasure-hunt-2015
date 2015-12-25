@@ -16,6 +16,7 @@ var STAGE_EXITING = 4;
 var SHARK_NAME = config.sharkName;
 console.log(SHARK_NAME)
 var DIALOGUE_INTRO = [
+	'Ah, the fish.',
 	'Before he was taken',
 	'my son would often swim far out to sea.',
 	'He used to tell me stories of a fish he often saw',
@@ -24,16 +25,16 @@ var DIALOGUE_INTRO = [
 	'but now, I wonder.',
 	'What did he say the fish\'s name was?',
 	'No, I can\'t remember.',
-	'Once, he drew me a picture of the fish - all covered in spots',
-	'I heard there was someone who could tell a fish\'s name from its spots.',
-	'Perhaps they can tell you its name.'
+	'He drew the picture you hold now - all covered in spots',
+	'I heard there was someone who could find a fish\'s name from its spots.',
+	'I wonder if they\'re still around?'
 ];
 var DIALOGUE_OUTRO = [
 	'That was it: ' + SHARK_NAME + '!',
 	SHARK_NAME + ' was the name of someone else, too.',
 	'Someone I worked with, a long time ago.',
 	'When I retired, he gave me a present',
-	'Magic glasses, to let one see things that can\'t be seen.',
+	'Something that let one see things that can\'t be seen.',
 ];
 
 var Intro = React.createClass({
