@@ -2,6 +2,7 @@ var React = require('react');
 var Link = require('react-router').Link;
 var ProceedButton = require('../proceed-button/proceed-button');
 var chapters = require('../../data/chapters');
+var audioClient = require('../../js/audio-client');
 
 var ChapterIntro = React.createClass({
 
@@ -17,9 +18,20 @@ var ChapterIntro = React.createClass({
 		}
 	},
 
+	componentWillReceiveProps: function (nextProps) {
+		// Change audio track if necessary
+		if (nextProps.params.chapter !== this.props.params.chapter && chapters[nextProps.params.chapter - 1].audio) {
+			audioClient.setTrack(chapters[nextProps.params.chapter - 1].audio);
+		}
+	},
+
 	componentDidMount: function() {
+		if (chapters[this.props.params.chapter - 1].audio) {
+			audioClient.setTrack(chapters[this.props.params.chapter - 1].audio);
+		}
 		this.reanimate();
 	},
+
 
 	reanimate: function () {
 		this.setState({

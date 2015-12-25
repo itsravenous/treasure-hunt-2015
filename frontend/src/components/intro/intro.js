@@ -2,6 +2,7 @@ var React = require('react');
 var Dialogue = require('../dialogue/dialogue');
 var ProceedButton = require('../proceed-button/proceed-button');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var audioClient = require('../../js/audio-client');
 
 var HIDDEN = {
 	opacity: 0,
@@ -31,6 +32,10 @@ var Intro = React.createClass({
 		return {
 			stage: INTRO
 		};
+	},
+
+	componentDidMount: function () {
+		audioClient.setTrack('intro');
 	},
 
 	render: function () {

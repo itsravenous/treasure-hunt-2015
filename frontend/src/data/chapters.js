@@ -4,7 +4,8 @@ module.exports = [
 		title: 'Water, water, everywhere',
 		image: '/img/chapter1.png',
 		link: '/sailing',
-		linkText: 'Proceed'
+		linkText: 'Proceed',
+		'audio': 'sailing'
 	},
 	{
 		number: 2,
