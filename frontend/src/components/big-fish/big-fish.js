@@ -1,3 +1,4 @@
+var config = require('../../js/config');
 var React = require('react');
 var Dialogue = require('../dialogue/dialogue');
 var ProceedButton = require('../proceed-button/proceed-button');
@@ -12,7 +13,7 @@ var STAGE_LOCK = 1;
 var STAGE_OUTRO = 2;
 var STAGE_BUTTON = 3;
 var STAGE_EXITING = 4;
-var SHARK_NAME = 'Joey';
+var SHARK_NAME = config.sharkName;
 var DIALOGUE_INTRO = [
 	'Before he was taken',
 	'my son would often swim far out to sea.',

@@ -1,3 +1,4 @@
+var config = require('../../js/config');
 var React = require('react');
 var Dialogue = require('../dialogue/dialogue');
 var ProceedButton = require('../proceed-button/proceed-button');
@@ -10,6 +11,7 @@ var STAGE_BUTTON = 1;
 var STAGE_PSV = 2;
 var STAGE_LOCK = 3;
 var STAGE_EXITING = 4;
+var PSV_URL = config.psvUrl;
 var DIALOGUE = [
 	'Things are not always as they seem.',
 	'Find my magic glasses',
@@ -33,7 +35,7 @@ var MagicGoggles = React.createClass({
 	componentDidUpdate: function () {
 		if (this.state.stage === STAGE_PSV) {
 			this.psv = new PhotoSphereViewer({
-					panorama: 'http://tassedecafe.org/wp-content/uploads/2013/01/parc-saint-pierre-amiens.jpg',
+					panorama: PSV_URL,
 					container: this.refs.psv,
 					navbar: true,
 					navbar_style: {
