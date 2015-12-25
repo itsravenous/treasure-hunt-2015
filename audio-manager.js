@@ -48,18 +48,48 @@ class AudioManager {
 		return this.players[track.id];
 	}
 
-	stopTrack(track) {
+	fadeOut(done) {
+		for (var i = 0; i <= 10; i++) {
+			(function (j) {
+				setTimeout(() => {
+					spawn('amixer', ['-D', 'pulse', 'sset', 'Master', (100 - j * 10) + '%']);
+				}, j * 250);
+			})(i);
+		}
+		if (done) setTimeout(done, 1000);
+	}
+
+	fadeIn(done) {
+		for (var i = 0; i <= 10; i++) {
+			(function (j) {
+				setTimeout(() => {
+					spawn('amixer', ['-D', 'pulse', 'sset', 'Master', (j * 10) + '%']);
+				}, j * 250);
+			})(i);
+		}
+		if (done) setTimeout(done, 1000);
+	}
+
+	stopTrack(track, done) {
 		if (this.players[track.id]) {
-			this.players[track.id].kill('SIGTERM');
+			this.fadeOut(() => {
+				this.players[track.id].kill('SIGTERM');
+				if (done) done();
+			});
 		}
 	}
 
 	playTrack(track) {
-		if (this.currentTrack) this.stopTrack(this.currentTrack);
-		setTimeout(() => {
+		var play = () => {
 			var player = this.getTrackPlayer(track);
 			this.currentTrack = track;
-		}, 1000);
+			this.fadeIn();
+		};
+		if (this.currentTrack) {
+			this.stopTrack(this.currentTrack, play);
+		} else {
+			play();
+		}
 	}
 }
 
