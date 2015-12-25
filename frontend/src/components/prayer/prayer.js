@@ -16,7 +16,8 @@ var MESSAGES = [
 	[
 		'With total darkness comes total clarity.',
 		'Seek a lone star',
-		'He is waiting for you there'
+		'He is waiting there',
+		'Thank you.',
 	]
 ];
 var MESSAGES1 = 0;
@@ -51,7 +52,7 @@ var Prayer = React.createClass({
 	},
 
 	componentWillUpdate: function (nextProps, nextState) {
-		if (nextState.stage === STAGE_MESSAGES2) {
+		if (nextState.stage === MESSAGES2) {
 			audioClient.setTrack('outro');
 		}
 	},
