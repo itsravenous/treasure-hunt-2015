@@ -90,7 +90,7 @@ var Intro = React.createClass({
 			case STAGE_BUTTON:
 				dialogue = DIALOGUE_OUTRO;
 				dialogueKey = 'dialogue-outro';
-				display = <ProceedButton to="/chapter/4"/>;
+				display = <ProceedButton to="/chapter/3"/>;
 			break;
 		}
 
