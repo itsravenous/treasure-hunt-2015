@@ -59,7 +59,7 @@ var MagicGoggles = React.createClass({
 			stage: STAGE_EXITING
 		});
 		setTimeout(function () {
-			window.location = '#/chapter/5';
+			window.location = '#/chapter/4';
 		}, 1000);
 	},
 
