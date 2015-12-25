@@ -14,6 +14,7 @@ var STAGE_OUTRO = 2;
 var STAGE_BUTTON = 3;
 var STAGE_EXITING = 4;
 var SHARK_NAME = config.sharkName;
+console.log(SHARK_NAME)
 var DIALOGUE_INTRO = [
 	'Before he was taken',
 	'my son would often swim far out to sea.',

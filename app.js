@@ -6,6 +6,10 @@ var audioManager = require('./audio-manager');
 
 app = express();
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+	console.log(req.method, req.path);
+	next();
+});
 
 app.use(express.static('frontend/dist'));
 

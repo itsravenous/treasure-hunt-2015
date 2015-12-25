@@ -40,8 +40,9 @@ class AudioManager {
 				console.error(data.toString('utf-8'));
 			});
 			player.on('close', (code, signal) => {
-				console.log('player process exited', code, signal);
+				console.log('player process exited', track.id, code, signal);
 				delete this.players[track.id];
+				console.log(this.players)
 			});
 			this.players[track.id] = player;
 		}
@@ -81,9 +82,11 @@ class AudioManager {
 
 	playTrack(track) {
 		var play = () => {
-			var player = this.getTrackPlayer(track);
-			this.currentTrack = track;
-			this.fadeIn();
+			setTimeout(() => {
+				var player = this.getTrackPlayer(track);
+				this.currentTrack = track;
+				this.fadeIn();
+			}, 500);
 		};
 		if (this.currentTrack) {
 			this.stopTrack(this.currentTrack, play);
