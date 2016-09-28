@@ -17,5 +17,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "fulltilt": "^0.5.3"
+  }
 }
